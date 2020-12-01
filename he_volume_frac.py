@@ -7,7 +7,7 @@ from ufl import min_value, max_value
 from params import (height, width, inlet_width, dist_center, inlet_depth, line_sep,
                                 INMOUTH1, INMOUTH2, OUTMOUTH1, OUTMOUTH2, INLET1, INLET2, OUTLET1, OUTLET2, WALLS)
 import sys
-from mma_solver import MMASolver
+from pyMMAopt import MMASolver
 from pyadjoint.placeholder import Placeholder
 import signal
 
@@ -20,8 +20,8 @@ direct_parameters = {
 
 import argparse
 parser = argparse.ArgumentParser(description='Level set method parameters')
-parser.add_argument('--enthalpy_scale', action="store", dest="enthalpy_scale", type=float, help='Enthalpy scale coefficient', default=1e5)
-parser.add_argument('--alphabar', action="store", dest="alphabar", type=float, help='Brinkmann penalty parameter scale', default=1e-5)
+parser.add_argument('--enthalpy_scale', action="store", dest="enthalpy_scale", type=float, help='Enthalpy scale coefficient', default=0.04)
+parser.add_argument('--alphabar', action="store", dest="alphabar", type=float, help='Brinkmann penalty parameter scale', default=3e-4)
 parser.add_argument('--mu', action="store", dest="mu", type=float, help='Viscosity', default=1e-1)
 parser.add_argument('--output_dir', action="store", dest="output_dir", type=str, help='Output directory', default="./")
 args = parser.parse_args()
